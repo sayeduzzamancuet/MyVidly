@@ -1,0 +1,21 @@
+﻿@using Microsoft.Ajax.Utilities
+@model MyVidly.Models.Movie
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.MovieName</h2>
+@{
+    if (Model==null)
+    {
+        <b>Nothing found in the database</b>
+    }
+    else
+    {
+        <b>Genre</b>@Model.Genre.Name <br/>
+        <b>Released date</b>@Model.ReleaseDate <br/>
+        <b>Date Added</b>@Model.DateAdded <br/>
+        <b>Stocks available</b>@Model.StockAvailable<br/>
+    }
+}

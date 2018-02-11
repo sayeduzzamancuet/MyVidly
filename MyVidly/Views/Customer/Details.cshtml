@@ -1,0 +1,32 @@
+﻿@using MyVidly.Models
+@model MyVidly.Models.Customer
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customer Details</h2>
+
+<table>
+    <tr>
+        <td>
+            Name: @Model.Name
+        </td>
+    </tr>
+    <tr>
+        @{
+            if (@Model.DoB != null)
+            {
+                <td>
+                    Date Of Birth: @Model.DoB<br />
+                </td>
+            }
+        }
+
+    </tr>
+    <tr>
+        <td>
+            Membership Type: @Model.MembershipType.Name<br/>
+        </td>
+    </tr>
+</table>

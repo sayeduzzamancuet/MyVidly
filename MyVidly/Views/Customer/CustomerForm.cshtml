@@ -1,0 +1,37 @@
+﻿@using System.Web.UI.WebControls
+@model MyVidly.ViewModel.CustomerFormViewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Add new customer</h3>
+@using (Html.BeginForm("Save", "Customer"))
+{
+    @Html.ValidationSummary(true,"Please fill the form correctly")
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.Name)
+        @Html.TextBoxFor(m => m.Customer.Name, new {@class = "form-control"})
+        @Html.ValidationMessageFor(m => m.Customer.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.DoB)
+        @Html.TextBoxFor(m => m.Customer.DoB, new {@class = "form-control"})
+        @Html.ValidationMessageFor(m=>m.Customer.DoB)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.IsSubscribedToNewsletter)
+        @Html.CheckBoxFor(m => m.Customer.IsSubscribedToNewsletter, new {@class = "checkbox"})
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.MembershipTypeId)
+        @Html.DropDownListFor(m => m.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "----", new {@class = "checkbox"})
+    </div>
+    @Html.HiddenFor(m=>m.Customer.Id)
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+}    
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval");
+}
