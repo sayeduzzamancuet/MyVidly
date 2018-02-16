@@ -1,0 +1,46 @@
+﻿@using MyVidly.Models
+@model IEnumerable<MyVidly.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customer List</h2>
+
+@{
+    if (Model.ToList().Count == 0)
+    {
+        <b>No customer</b>
+    }
+    else
+    {
+        <table id="Customers" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Customer Name</th>
+                    <th>Membership Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var customer in Model)
+                {
+                    <tr>
+                        <td>@Html.ActionLink(customer.Name, "Details", "Customer", new { customer.Id }, null)</td>
+                        <td>@customer.MembershipType.Name</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    }
+}
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+           var table= $('#Customers').DataTable();
+        });
+    
+    </script>
+}

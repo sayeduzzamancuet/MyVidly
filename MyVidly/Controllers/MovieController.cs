@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.Ajax.Utilities;
+using Microsoft.AspNet.Identity;
 using MyVidly.Models;
 using MyVidly.ViewModel;
 
@@ -29,15 +30,22 @@ namespace MyVidly.Controllers
 		public ActionResult Index()
 		{
 			var movieList = _context.Movies.Include(c => c.Genre).ToList();
-			if (movieList.Count == 0)
+			if (User.IsInRole(RoleName.CanManageMovies))
 			{
-				return Content("Nothing found");
+				if (movieList.Count == 0)
+				{
+					return Content("Nothing found");
+				}
+				else
+				{
+					return View(movieList);
+				}
 			}
 			else
 			{
-				return View(movieList); 
+				return View("ReadOnly",movieList);
 			}
-			
+
 		}
 
 		public ActionResult Details(int id)
@@ -72,6 +80,7 @@ namespace MyVidly.Controllers
 		
 		[HttpPost]
 		[ValidateAntiForgeryToken]
+		[Authorize(Roles = RoleName.CanManageMovies) ]
 		public ActionResult Save(Movie movie)
 		{
 			ModelState.Remove("Movie.Id");
@@ -105,6 +114,10 @@ namespace MyVidly.Controllers
 				return View("MovieForm", viewModel);
 			}
 		}
+
+
+		[Authorize(Roles = RoleName.CanManageMovies)]
+
 		public ActionResult Edit(int id)
 		{
 			var movie = _context.Movies.SingleOrDefault(c => c.Id == id);

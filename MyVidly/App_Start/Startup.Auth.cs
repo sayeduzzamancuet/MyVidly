@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.Google;
 using Owin;
 
 namespace MyVidly
@@ -29,10 +30,15 @@ namespace MyVidly
             //   consumerSecret: "");
 
             //app.UseFacebookAuthentication(
-            //   appId: "",
+            //   appId: "541350626234858",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication();
+            
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "28442490759-tfogparioa8ejpri7lcl18e5p0ogf6pr.apps.googleusercontent.com",
+                ClientSecret = "8bcTiKcexdDY7YDc9erMkDSn"
+            } );
         }
     }
 }

@@ -93,3 +93,5 @@ C:\Users\eliaszaman\documents\visual studio 2013\Projects\MVC_Practice\MyVidly\M
 C:\Users\eliaszaman\documents\visual studio 2013\Projects\MVC_Practice\MyVidly\MyVidly\bin\System.Web.Http.WebHost.xml
 C:\Users\eliaszaman\documents\visual studio 2013\Projects\MVC_Practice\MyVidly\MyVidly\bin\AutoMapper.dll
 C:\Users\eliaszaman\documents\visual studio 2013\Projects\MVC_Practice\MyVidly\MyVidly\bin\AutoMapper.xml
+C:\Users\eliaszaman\documents\visual studio 2013\Projects\MVC_Practice\MyVidly\MyVidly\obj\Debug\MyVidly.csprojResolveAssemblyReference.cache
+C:\Users\eliaszaman\documents\visual studio 2013\Projects\MVC_Practice\MyVidly\MyVidly\obj\Debug\MyVidly.Migrations.seedUsers.resources
