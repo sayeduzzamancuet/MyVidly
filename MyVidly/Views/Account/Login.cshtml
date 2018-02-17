@@ -11,7 +11,7 @@
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
-                <h4>Use a local account to log in.</h4>
+                <h4 class="label-info">Use a local account to log in. To get full features access, use username:"admin" with password:"123456", for normal usage use google account to sign up or use random username to create your account.</h4>
                 <hr />
                 @Html.ValidationSummary(true)
                 <div class="form-group">
@@ -38,7 +38,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Log in" class="btn btn-default" />
+                        <input type="submit" value="Log in" class="btn dt-button-background" />
                     </div>
                 </div>
                 <p>

@@ -27,6 +27,7 @@ namespace MyVidly.Controllers
 		}
 		//
 		// GET: /Movie/
+		[OutputCache(Duration = 100)]
 		public ActionResult Index()
 		{
 			var movieList = _context.Movies.Include(c => c.Genre).ToList();
